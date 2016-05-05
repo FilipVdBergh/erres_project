@@ -1,0 +1,21 @@
+# This is the favorites file for the Erres Project.
+# Each favorite consists of two lines: a name on the first line, and an address on the second.
+# Favorites are separated by a blank line.
+
+NPO Radio 1
+http://opml.radiotime.com/Tune.ashx?id=s17523&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
+
+NPO Radio 2
+http://opml.radiotime.com/Tune.ashx?id=s9483&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
+
+3FM
+http://opml.radiotime.com/Tune.ashx?id=s96203&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
+
+NPO Radio 4
+http://opml.radiotime.com/Tune.ashx?id=s25548&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
+
+NPO Radio 5
+http://opml.radiotime.com/Tune.ashx?id=s25544&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
+
+NPO Soul and Jazz
+http://opml.radiotime.com/Tune.ashx?id=s6705&formats=aac,ogg,mp3&partnerId=16&serial=e64792fb755d8e6bc14a5eeaf921d673
