@@ -12,11 +12,14 @@ class interface:
                       "Favorites": 3,
                       "Info": 4,
                       "Sync": 5}
-        self.modeMax = 4 # THis ensures that the sync option is never available. Also, I'm sure the way the modes are numbered (in a dict) isn't that smart.
+        self.modeMax = 4 # This ensures that the sync option is never available. Also, I'm sure the way the modes are numbered (in a dict) isn't that smart.
         if mode is None:
             self.mode = self.modes["Off"]
         else:
             self.mode = mode
+        self.display.create_char(1, self.char("undefined"))
+        self.display.create_char(2, self.char("undefined"))
+        self.display.create_char(3, self.char("undefined"))
         self.display.create_char(4, self.char("vol_0"))
         self.display.create_char(5, self.char("vol_25"))
         self.display.create_char(6, self.char("vol_50"))
@@ -28,11 +31,6 @@ class interface:
         self.volumeDirection = 1
         self.iconLocationColumns = 0
         self.iconLocationRows = 0
-        self.progress = {0: "\x04",
-                         1: "\x05",
-                         2: "\x06",
-                         3: "\x07",
-                         4: "\x08"}
         self.lineColumn = 2
         self.lines = ("", "", "", "")
         self.favoritesListIndex = 0
@@ -80,6 +78,11 @@ class interface:
             code = [0,28,19,17,17,31,0,31]
         elif name == "clock":
             code = [0,14,21,23,17,14,0,31]
+        elif name == "undefined":
+            code = [10,21,0,21,21,0,10,21]
+        else:
+            code = [10,21,0,21,21,0,10,21]
+            print("Encountered erroneous character definition")
         return code
 
     def update_player_powerstate(self):
@@ -118,28 +121,33 @@ class interface:
         self.redraw_main()
 
     def redraw_volume(self):
+        progress = {0: "\x04",
+                    1: "\x05",
+                    2: "\x06",
+                    3: "\x07",
+                    4: "\x08"}
         parts = ((self.player.get_volume()*12)/100)
         if parts > 8:
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow)
-            self.display.message(self.progress[4])
+            self.display.message(progress[4])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 1)
-            self.display.message(self.progress[4])
+            self.display.message(progress[4])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 2)
-            self.display.message(self.progress[parts-8])
+            self.display.message(progress[parts-8])
         elif parts > 4:
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow)
-            self.display.message(self.progress[4])
+            self.display.message(progress[4])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 1)
-            self.display.message(self.progress[parts-4])
+            self.display.message(progress[parts-4])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 2)
-            self.display.message(self.progress[0])
+            self.display.message(progress[0])
         elif parts > 0:
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow)
-            self.display.message(self.progress[parts])
+            self.display.message(progress[parts])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 1)
-            self.display.message(self.progress[0])
+            self.display.message(progress[0])
             self.display.set_cursor(self.volumeColumn, self.volumeStartRow - 2)
-            self.display.message(self.progress[0])
+            self.display.message(progress[0])
 
     def redraw_main(self):
         if self.mode == self.modes["Off"]:

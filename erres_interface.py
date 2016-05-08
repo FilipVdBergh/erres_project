@@ -73,6 +73,7 @@ lcd.message("\n")
 init = True
 numberOfTries = 0
 status_update(lms_player)
+timeElapsedBetweenTries = 0
 while init:
     try:
         numberOfTries += 1
@@ -89,7 +90,7 @@ while init:
             time.sleep(1)
             timeElapsedBetweenTries -= 1
 lcd.message("\n")
-print("Initialization complete")
+status_update("Ready")
 # endregion
 
 

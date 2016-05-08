@@ -18,13 +18,13 @@ RE3R = 19
 RE3B = 13
 
 # LCD colors
-LCD_red = 0.7
+LCD_red = 1.0
 LCD_green = 1.0
 LCD_blue = 0.0
 
-LCD_off_red = 0.1
-LCD_off_green = 0.1
-LCD_off_blue = 0.0
+LCD_off_red = 0.0
+LCD_off_green = 0.0
+LCD_off_blue = 0.1
 
 # Interface
 displayUpdateCycles=4
